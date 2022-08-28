@@ -1,3 +1,9 @@
+.page-main {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
 .parent-head {
     display: flex;
     flex-direction: column;
@@ -12,4 +18,46 @@
 
 .parent-head p {
     font-size: 2rem;
+}
+
+.parent-body {
+    display: flex;
+    border: solid 3px black;
+    border-radius: 5px;;
+    height: 100%;
+}
+
+.selection-bar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 20%;
+    padding: 10px;
+    background-color: aqua;
+}
+
+.edit-form {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.edit-form-body {
+    background-color: blue;
+    top: 0;
+    padding: 10px;
+    height: 100%;
+}
+
+.edit-form-bottom {
+    background-color: brown;
+    display: flex;
+    flex-direction: row-reverse;
+    bottom: 0;
+    padding: 10px;
+}
+
+.test-parent {
+    display: flex;
+    flex-direction: column;
 }
