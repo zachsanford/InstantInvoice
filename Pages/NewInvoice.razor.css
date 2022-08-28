@@ -1,0 +1,15 @@
+.parent-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.parent-head h1 {
+    font-size: 7rem;
+}
+
+.parent-head p {
+    font-size: 2rem;
+}

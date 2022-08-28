@@ -1,0 +1,10 @@
+.parent {
+    display: flex;
+}
+
+@code {
+    
+    [Parameter]
+    public int InvoiceNumber { get; set; } = 000
+
+}
