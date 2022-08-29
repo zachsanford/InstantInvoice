@@ -13,13 +13,152 @@
     </div>
     <div class="parent-body">
         <div class="selection-bar">
-            <div>one</div>
-            <div>two</div>
+            <nav class="flex-column">
+                <div class="nav-item px-3">
+                    <div class="form-tab">
+                        <button @onclick="@(e => FormTabClick("button0"))" class="@btnList[0][1]" style="font-family: 'Permanent Marker', serif;">General Info</button>
+                    </div>
+                </div>
+                <div class="nav-item px-3">
+                    <div class="form-tab">
+                        <button @onclick="@(() => FormTabClick("button1"))" class="@btnList[1][1]" style="font-family: 'Permanent Marker', serif;">Your Info</button>
+                    </div>
+                </div>
+                <div class="nav-item px-3">
+                    <div class="form-tab">
+                        <button @onclick="@(() => FormTabClick("button2"))" class="@btnList[2][1]" style="font-family: 'Permanent Marker', serif;">Billing Info</button>
+                    </div>
+                </div>
+                <div class="nav-item px-3">
+                    <div class="form-tab">
+                        <button @onclick="@(() => FormTabClick("button3"))" class="@btnList[3][1]" style="font-family: 'Permanent Marker', serif;">Shipping Info (Optional)</button>
+                    </div>
+                </div>
+                <div class="nav-item px-3">
+                    <div class="form-tab">
+                        <button @onclick="@(() => FormTabClick("button4"))" class="@btnList[4][1]" style="font-family: 'Permanent Marker', serif;">Line Items</button>
+                    </div>
+                </div>
+                <div class="nav-item px-3">
+                    <div class="form-tab">
+                        <button @onclick="@(() => FormTabClick("button5"))" class="@btnList[5][1]" style="font-family: 'Permanent Marker', serif;">Discounts, Taxes and Notes</button>
+                    </div>
+                </div>
+            </nav>
         </div>
         <div class="edit-form">
-            <div class="edit-form-body">
-                <div>one</div>
-                <div>two</div>
+            <div class="edit-form-body" style="font-family: 'Figtree', serif;">
+                <EditForm style="width: 100%;" Model="userInvoice" OnValidSubmit="GenerateInvoice">
+                    @if (selectedTab == "button0")
+                    {
+                        <div class="column">
+                            <label>Invoice Number: </label>
+                            <InputText placeholder="0001" @bind-Value="@userInvoice.Number" />
+                        </div>
+                        <div class="column">
+                            <label>Date: </label>
+                            <InputDate @bind-Value="@userInvoice.Date" />
+                        </div>
+                    }
+                    else if (selectedTab == "button1")
+                    {
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Company Name: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="ABC Company" @bind-Value="@userInvoice.CompanyName" />
+                            </div>
+                            <div class="column sub">
+                                <label>City: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="New Clover" @bind-Value="@userInvoice.CompanyCity" />
+                            </div>
+                            <div class="column sub">
+                                <label>Zip Code: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="12345" @bind-Value="@userInvoice.CompanyZipCode" />
+                            </div>
+                            <div class="column sub">
+                                <label>Email: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="you@abccompany.com" @bind-Value="@userInvoice.CompanyEmail" />
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Address: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="123 Easy Street" @bind-Value="@userInvoice.CompanyAddress" />
+                            </div>
+                            <div class="column sub">
+                                <label>State: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="Oregon" @bind-Value="@userInvoice.CompanyState" />
+                            </div>
+                            <div class="column sub">
+                                <label>Website: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="abccompany.com" @bind-Value="@userInvoice.CompanyWebsite" />
+                            </div>
+                        </div>
+                    }
+                    else if (selectedTab == "button2")
+                    {
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Company Name: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="ABC Company" @bind-Value="@userInvoice.BillingName" />
+                            </div>
+                            <div class="column sub">
+                                <label>City: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="New Clover" @bind-Value="@userInvoice.BillingCity" />
+                            </div>
+                            <div class="column sub">
+                                <label>Zip Code: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="12345" @bind-Value="@userInvoice.BillingZipCode" />
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Address: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="123 Easy Street" @bind-Value="@userInvoice.BillingAddress" />
+                            </div>
+                            <div class="column sub">
+                                <label>State: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="Oregon" @bind-Value="@userInvoice.BillingState" />
+                            </div>
+                        </div>
+                    }
+                    else if (selectedTab == "button3")
+                    {
+                        
+                    }
+                    else if (selectedTab == "button4")
+                    {
+                        
+                    }
+                    else if (selectedTab == "button5")
+                    {
+                        
+                    }
+                </EditForm>
             </div>
             <div class="edit-form-bottom">
                 <button class="btn btn-primary">Generate</button>
@@ -27,6 +166,36 @@
         </div>
     </div>
 </div>
+
+@code {
+
+    Invoice userInvoice = new Invoice();
+    string selectedTab = "button0";
+    List<string[]> btnList = new List<string[]>()
+    {
+        new string[] { "button0", "form-tab-selected" },
+        new string[] { "button1", "" },
+        new string[] { "button2", "" },
+        new string[] { "button3", "" },
+        new string[] { "button4", "" },
+        new string[] { "button5", "" }
+    };
+
+    void FormTabClick(string _button)
+    {
+        foreach (string[] buttonClass in btnList)
+        {
+            buttonClass[1] = (buttonClass[0] == _button) ? "form-tab-selected" : "";
+            selectedTab = _button;
+        }
+    }
+
+    void GenerateInvoice()
+    {
+
+    }
+}
+
 @* Test *@
 @* @if (testInvoice == null || testLineItemOne == null || testLineItemTwo == null)
 {
