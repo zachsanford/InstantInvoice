@@ -23,7 +23,7 @@ public class Invoice
     public string? ShippingZipCode { get; set; }
     public List<LineItem> Items { get; set; }
     public double Subtotal => GetTotal(Items);
-    public double Discount { get; set; }
+    public double Discount { get; set; } = 0.00;
     public double Tax { get; set; }
     public double Total => Subtotal - Discount + Tax;
     public string? Notes { get; set; }

@@ -148,15 +148,71 @@
                     }
                     else if (selectedTab == "button3")
                     {
-                        
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Company Name: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="ABC Company" @bind-Value="@userInvoice.ShippingName" />
+                            </div>
+                            <div class="column sub">
+                                <label>City: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="New Clover" @bind-Value="@userInvoice.ShippingCity" />
+                            </div>
+                            <div class="column sub">
+                                <label>Zip Code: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="12345" @bind-Value="@userInvoice.ShippingZipCode" />
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Address: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="123 Easy Street" @bind-Value="@userInvoice.ShippingAddress" />
+                            </div>
+                            <div class="column sub">
+                                <label>State: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputText placeholder="Oregon" @bind-Value="@userInvoice.ShippingState" />
+                            </div>
+                        </div>
                     }
                     else if (selectedTab == "button4")
                     {
-                        
+                        // Need to create components
                     }
                     else if (selectedTab == "button5")
                     {
-                        
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Discount: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputNumber Min="0.00" Step="0.01" @bind-Value="@userInvoice.Discount" />
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="column sub">
+                                <label>Tax: </label>
+                            </div>
+                            <div class="column sub">
+                                <InputNumber Min="0.00" Step="0.01" @bind-Value="@userInvoice.Tax" />
+                            </div>
+                        </div>
+                        <div class="column-notes">
+                            <div class="column-notes sub-notes">
+                                <label>Notes:</label>
+                            </div>
+                            <div class="column-notes sub-notes">
+                                <InputTextArea placeholder="Some notes" style="height: 400px; resize: none;" @bind-Value="@userInvoice.Notes" />
+                            </div>
+                        </div>
                     }
                 </EditForm>
             </div>
