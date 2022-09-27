@@ -1,0 +1,16 @@
+.line-item-add {   
+
+}
+
+.line-item-add button {
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.line-item-parent {
+    display: flex;
+    flex-direction: column;
+    clear: both;
+}

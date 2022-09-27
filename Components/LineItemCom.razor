@@ -1,0 +1,70 @@
+<div class="line-item-add">
+    <button @onclick=AddLineItem>Add Another Item</button>
+    <button @onclick=RemoveLineItem>Remove Last Line Item</button>
+</div>
+<div class="line-item-parent">
+    <table>
+        <thead>
+            <tr>
+                <td>Quantity</td>
+                <td>Description</td>
+                <td>Unit Cost</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < PassedCountOfLineItem; i++)
+            {
+                <tr>
+                    @* <div class="line-item"> *@
+                        <td><InputNumber min="0" max="100" step="1" @bind-Value="PassedLineItem[i].Quantity" /></td>
+                        <td><InputText placeholder="Description" @bind-Value="PassedLineItem[i].Description" /></td>
+                        <td><InputNumber min="0.00" step="0.01" @bind-Value="PassedLineItem[i].UnitCost" /></td>
+                    @* </div> *@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public LineItem[] PassedLineItem { get; set; }
+    [Parameter]
+    public EventCallback<LineItem[]> PassedLineItemChanged { get; set; }
+    [Parameter]
+    public int PassedCountOfLineItem { get; set; }
+    [Parameter]
+    public EventCallback<int> PassedCountOfLineItemChanged { get; set; }
+
+    async Task UpdatePassedLineItem()
+    {
+        await PassedLineItemChanged.InvokeAsync(PassedLineItem);
+    }
+
+    async Task UpdatePassedCountOfLineItem()
+    {
+        await PassedCountOfLineItemChanged.InvokeAsync(PassedCountOfLineItem);
+    }
+
+    void AddLineItem()
+    {
+        if (PassedCountOfLineItem < 5)
+        {
+            PassedCountOfLineItem++;
+            UpdatePassedCountOfLineItem();
+        }
+    }
+
+    void RemoveLineItem()
+    {
+        if (PassedCountOfLineItem > 1)
+        {
+            PassedCountOfLineItem--;
+            UpdatePassedCountOfLineItem();
+        }
+    }
+
+}

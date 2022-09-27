@@ -185,7 +185,7 @@
                     }
                     else if (selectedTab == "button4")
                     {
-                        // Need to create components
+                        <LineItemCom @bind-PassedLineItem=lineItems @bind-PassedCountOfLineItem=countOfLineItem />
                     }
                     else if (selectedTab == "button5")
                     {
@@ -217,6 +217,10 @@
                 </EditForm>
             </div>
             <div class="edit-form-bottom">
+                @foreach (LineItem item in lineItems)
+                {
+                    @item.Quantity
+                }
                 <button class="btn btn-primary">Generate</button>
             </div>
         </div>
@@ -226,7 +230,9 @@
 @code {
 
     Invoice userInvoice = new Invoice();
+    LineItem[] lineItems = new LineItem[6];
     string selectedTab = "button0";
+    int countOfLineItem = 0;
     List<string[]> btnList = new List<string[]>()
     {
         new string[] { "button0", "form-tab-selected" },
@@ -236,6 +242,14 @@
         new string[] { "button4", "" },
         new string[] { "button5", "" }
     };
+
+    protected override async Task OnInitializedAsync()
+    {
+        for (int i = 0; i < lineItems.Length; i++)
+        {
+            lineItems[i] = new LineItem();
+        }
+    }
 
     void FormTabClick(string _button)
     {
