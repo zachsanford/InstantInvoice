@@ -1,0 +1,39 @@
+.line-item-add button {
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.form-div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form-div div {
+    width: 25%;
+}
+
+.form-div button {
+    border: none;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.line-item-parent {
+    display: flex;
+    flex-direction: column;
+    clear: both;
+}
+
+.line-item-parent table {
+    height: 80%;
+}
+
+.line-item-parent thead {
+    font-weight: bold;
+}

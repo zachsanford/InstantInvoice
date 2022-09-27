@@ -1,9 +1,27 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Instant Invoice</PageTitle>
 
-<h1>Hello, world!</h1>
+@* Import Fonts *@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Figtree">
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="parent-head">
+    <h1 style="font-family: 'Permanent Marker', serif;">Welcome to Instant Invoice</h1>
+    <p style="font-family: 'Permanent Marker', serif;">One-Stop Shop for Quick Invoice Creation</p>
+</div>
+<div class="parent-body" style="font-family: 'Figtree', serif;">
+    <div class="body">
+        Need a quick invoice?? <em>Instant Invoice</em> has your back. Quickly create professional
+        invoices with your data. It's simple, just add the data that you want and generate an invoice.
+        You can then print the invoice. It could not be easier.
+        <br />
+        <br />
+        To get started, click on the Make New Invoice tab!
+    </div>
+    <div class="body foot">
+        <p>
+            <a href="https://www.twitter.com/zachsanford">@@zachsanford</a> | @DateTime.Today.ToString("yyyy")
+        </p>
+    </div>
+</div>
