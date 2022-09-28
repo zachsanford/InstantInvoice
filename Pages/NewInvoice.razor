@@ -50,15 +50,18 @@
         <div class="edit-form">
             <div class="edit-form-body" style="font-family: 'Figtree', serif;">
                 <EditForm style="width: 100%;" id="invoiceForm" Model="userInvoice" OnValidSubmit="GenerateInvoice">
+                    <DataAnnotationsValidator />
                     @if (selectedTab == "button0")
                     {
                         <div class="column">
                             <label>Invoice Number: </label>
                             <InputText placeholder="0001" @bind-Value="@userInvoice.Number" />
+                            <ValidationMessage For="@(() => userInvoice.Number)" />
                         </div>
                         <div class="column">
                             <label>Date: </label>
                             <InputDate @bind-Value="@userInvoice.Date" />
+                            <ValidationMessage For="@(() => userInvoice.Date)" />
                         </div>
                     }
                     else if (selectedTab == "button1")
@@ -69,24 +72,28 @@
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="ABC Company" @bind-Value="@userInvoice.CompanyName" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyName)" />
                             </div>
                             <div class="column sub">
                                 <label>City: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="New Clover" @bind-Value="@userInvoice.CompanyCity" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyCity)" />
                             </div>
                             <div class="column sub">
                                 <label>Zip Code: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="12345" @bind-Value="@userInvoice.CompanyZipCode" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyZipCode)" />
                             </div>
                             <div class="column sub">
                                 <label>Email: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="you@abccompany.com" @bind-Value="@userInvoice.CompanyEmail" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyEmail)" />
                             </div>
                         </div>
                         <div class="column">
@@ -95,18 +102,21 @@
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="123 Easy Street" @bind-Value="@userInvoice.CompanyAddress" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyAddress)" />
                             </div>
                             <div class="column sub">
                                 <label>State: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="Oregon" @bind-Value="@userInvoice.CompanyState" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyState)" />
                             </div>
                             <div class="column sub">
                                 <label>Website: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="abccompany.com" @bind-Value="@userInvoice.CompanyWebsite" />
+                                <ValidationMessage For="@(() => userInvoice.CompanyWebsite)" />
                             </div>
                         </div>
                     }
@@ -118,18 +128,21 @@
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="ABC Company" @bind-Value="@userInvoice.BillingName" />
+                                <ValidationMessage For="@(() => userInvoice.BillingName)" />
                             </div>
                             <div class="column sub">
                                 <label>City: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="New Clover" @bind-Value="@userInvoice.BillingCity" />
+                                <ValidationMessage For="@(() => userInvoice.BillingCity)" />
                             </div>
                             <div class="column sub">
                                 <label>Zip Code: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="12345" @bind-Value="@userInvoice.BillingZipCode" />
+                                <ValidationMessage For="@(() => userInvoice.BillingZipCode)" />
                             </div>
                         </div>
                         <div class="column">
@@ -138,12 +151,14 @@
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="123 Easy Street" @bind-Value="@userInvoice.BillingAddress" />
+                                <ValidationMessage For="@(() => userInvoice.BillingAddress)" />
                             </div>
                             <div class="column sub">
                                 <label>State: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="Oregon" @bind-Value="@userInvoice.BillingState" />
+                                <ValidationMessage For="@(() => userInvoice.BillingState)" />
                             </div>
                         </div>
                     }
@@ -155,18 +170,21 @@
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="ABC Company" @bind-Value="@userInvoice.ShippingName" />
+                                <ValidationMessage For="@(() => userInvoice.ShippingName)" />
                             </div>
                             <div class="column sub">
                                 <label>City: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="New Clover" @bind-Value="@userInvoice.ShippingCity" />
+                                <ValidationMessage For="@(() => userInvoice.ShippingCity)" />
                             </div>
                             <div class="column sub">
                                 <label>Zip Code: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="12345" @bind-Value="@userInvoice.ShippingZipCode" />
+                                <ValidationMessage For="@(() => userInvoice.ShippingZipCode)" />
                             </div>
                         </div>
                         <div class="column">
@@ -175,12 +193,14 @@
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="123 Easy Street" @bind-Value="@userInvoice.ShippingAddress" />
+                                <ValidationMessage For="@(() => userInvoice.ShippingAddress)" />
                             </div>
                             <div class="column sub">
                                 <label>State: </label>
                             </div>
                             <div class="column sub">
                                 <InputText placeholder="Oregon" @bind-Value="@userInvoice.ShippingState" />
+                                <ValidationMessage For="@(() => userInvoice.ShippingState)" />
                             </div>
                         </div>
                     }
@@ -212,6 +232,7 @@
                             </div>
                             <div class="column-notes sub-notes">
                                 <InputTextArea placeholder="Some notes" style="height: 400px; resize: none;" @bind-Value="@userInvoice.Notes" />
+                                <ValidationMessage For="@(() => userInvoice.Notes)" />
                             </div>
                         </div>
                     }
