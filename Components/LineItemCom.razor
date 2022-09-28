@@ -28,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            @if (editLineItem != null)
+            @if (editLineItem != null && PassedLineItem != null)
             {
                 @foreach (LineItem item in PassedLineItem)
                 {
@@ -47,9 +47,9 @@
 @code {
 
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
+    public RenderFragment? ChildContent { get; set; }
     [Parameter]
-    public List<LineItem> PassedLineItem { get; set; }
+    public List<LineItem>? PassedLineItem { get; set; }
     [Parameter]
     public EventCallback<List<LineItem>> PassedLineItemChanged { get; set; }
     [Parameter]
@@ -64,13 +64,20 @@
 
     void AddLineItem()
     {
-        if (PassedLineItem.Count < MaxNumberOfLineItems)
+        if (PassedLineItem != null)
         {
-            if(editLineItem.Quantity != 0 && !string.IsNullOrEmpty(editLineItem.Description) && editLineItem.UnitCost != 0.00)
+            if (PassedLineItem.Count < MaxNumberOfLineItems)
             {
-                PassedLineItem.Add(editLineItem);
-                UpdatePassedLineItem();
-                editLineItem = new LineItem();
+                if(editLineItem.Quantity != 0 && !string.IsNullOrEmpty(editLineItem.Description) && editLineItem.UnitCost != 0.00)
+                {
+                    PassedLineItem.Add(editLineItem);
+                    /*
+                        TODO:
+                        Test to see if we still need UpdatePassedLineItem()
+                    */
+                    UpdatePassedLineItem();
+                    editLineItem = new LineItem();
+                }
             }
         }
     }
