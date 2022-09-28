@@ -1,0 +1,45 @@
+@*
+    NEED TO DELETE THIS FILE WHEN FINISHED.
+    BE SURE TO EDIT THE NAVMENU FILE AS WELL.
+*@
+
+@page "/testpage"
+@inject Services.AppData AppData
+
+<h1>Test Page</h1>
+@if (AppData.UserInvoiceData.CompanyName != null)
+{
+    <p>
+        @AppData.UserInvoiceData.CompanyName
+    </p>
+}
+@* <p>
+    @AppData.UserInvoiceData.CompanyName
+</p>
+<p>
+    @AppData.UserInvoiceData.BillingName
+</p>
+@for (int i = 0; i < AppData.UserInvoiceData.Items.Count; i++)
+{
+    <p>
+        @AppData.UserInvoiceData.Items[i].Quantity
+    </p>
+    <p>
+        @AppData.UserInvoiceData.Items[i].Description
+    </p>
+    <p>
+        @AppData.UserInvoiceData.Items[i].UnitCost.ToString("C");
+    </p>
+    <p>
+        @AppData.UserInvoiceData.Items[i].Total.ToString("C");
+    </p>
+}
+<p>
+    @AppData.UserInvoiceData.Subtotal.ToString("C");
+</p>
+<p>
+    @AppData.UserInvoiceData.Tax.ToString("C");
+</p>
+<p>
+    @AppData.UserInvoiceData.Total.ToString("C");
+</p> *@

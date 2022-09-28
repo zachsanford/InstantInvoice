@@ -1,4 +1,5 @@
 @page "/new-invoice"
+@inject Services.AppData AppData
 
 <PageTitle>Create New Invoice</PageTitle>
 
@@ -48,7 +49,7 @@
         </div>
         <div class="edit-form">
             <div class="edit-form-body" style="font-family: 'Figtree', serif;">
-                <EditForm style="width: 100%;" Model="userInvoice" OnValidSubmit="GenerateInvoice">
+                <EditForm style="width: 100%;" id="invoiceForm" Model="userInvoice" OnValidSubmit="GenerateInvoice">
                     @if (selectedTab == "button0")
                     {
                         <div class="column">
@@ -217,7 +218,7 @@
                 </EditForm>
             </div>
             <div class="edit-form-bottom">
-                <button class="btn btn-primary">Generate</button>
+                <button type="submit" form="invoiceForm" class="btn btn-primary">Generate</button>
             </div>
         </div>
     </div>
@@ -228,7 +229,6 @@
     Invoice userInvoice = new Invoice();
     List<LineItem> lineItems = new List<LineItem>();
     string selectedTab = "button0";
-    int countOfLineItem = 0;
     const int MAX_NUMBER_OF_LINE_ITEMS = 10;
     List<string[]> btnList = new List<string[]>()
     {
@@ -239,14 +239,6 @@
         new string[] { "button4", "" },
         new string[] { "button5", "" }
     };
-
-    @* protected override async Task OnInitializedAsync()
-    {
-        for (int i = 0; i < lineItems.Length; i++)
-        {
-            lineItems[i] = new LineItem();
-        }
-    } *@
 
     void FormTabClick(string _button)
     {
@@ -259,72 +251,13 @@
 
     void GenerateInvoice()
     {
+        Console.WriteLine("GenerateInvoice() Triggered!");
+        userInvoice.Items = lineItems;
+        AppData.UserInvoiceData = userInvoice;
 
+        /*
+            TODO:
+            Need to route to a page that does not inherit shared components.
+        */
     }
 }
-
-@* Test *@
-@* @if (testInvoice == null || testLineItemOne == null || testLineItemTwo == null)
-{
-    <div>
-        Loading...
-    </div>
-}
-else
-{
-    <div class="test-parent" style="font-family: 'Figtree', serif;">
-        <div>First Line Item Total: @testInvoice.Items[0].Total</div>
-        <div>First Line Item Total: @testInvoice.Items[1].Total</div>
-        <div>Subtotal: @testInvoice.Subtotal</div>
-        <div>Total: @testInvoice.Total</div>
-    </div>
-}
-
-
-@code {
-
-    LineItem testLineItemOne;
-    LineItem testLineItemTwo;
-    Invoice testInvoice;
-
-    protected override void OnInitialized()
-    {
-        testLineItemOne = new LineItem()
-        {
-            Quantity = 2,
-            Description = "Cat Toy",
-            UnitCost = 2.49
-        };
-
-        testLineItemTwo = new LineItem()
-        {
-            Quantity = 1,
-            Description = "Cat Food",
-            UnitCost = 12.99
-        };
-
-        testInvoice = new Invoice()
-        {
-            Date = DateTime.Now,
-            Number = "0001",
-            CompanyName = "Zach's Company",
-            CompanyAddress = "1836 NW Otie Street",
-            CompanyCity = "Roseburg",
-            CompanyState = "Oregon",
-            CompanyZipCode = 97470,
-            BillingName = "Nora Bear",
-            BillingAddress = "123 Easy Street",
-            BillingCity = "Boring",
-            BillingState = "Oregon",
-            BillingZipCode = 12345,
-            Items = new List<LineItem>()
-            {
-                testLineItemOne,
-                testLineItemTwo
-            },
-            Discount = 1.50,
-            Tax = 0.50
-        };
-    }
-
-} *@
