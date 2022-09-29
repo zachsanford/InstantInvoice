@@ -1,0 +1,10 @@
+@page "/generated-invoice"
+@inject Services.AppData AppData
+@layout EmptyLayout
+
+<PageTitle>Your Invoice</PageTitle>
+
+@if (!string.IsNullOrEmpty(AppData.UserInvoiceData.CompanyName))
+{
+    <h1>@AppData.UserInvoiceData.CompanyName</h1>
+}
