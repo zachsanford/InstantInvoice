@@ -1,0 +1,10 @@
+h1 {
+    background-color: lightslategray;
+}
+
+@media print {
+    h1 {
+        font-family:'Times New Roman', Times, serif;
+        background-color: aqua;
+    }
+}

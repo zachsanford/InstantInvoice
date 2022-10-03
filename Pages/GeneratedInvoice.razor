@@ -6,5 +6,24 @@
 
 @if (!string.IsNullOrEmpty(AppData.UserInvoiceData.CompanyName))
 {
-    <h1>@AppData.UserInvoiceData.CompanyName</h1>
+    <InvoiceHead CompanyName="Brown" CompanyStreet="123 Main Street"
+        CompanyCity="Fartsville" CompanyState="Oregon"
+        CompanyZip="12345" InvoiceNumber="0069" Date="@DateTime.Now" />
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {   
+        if (AppData.UserInvoiceData == null)
+        {
+            AppData.UserInvoiceData = new Invoice();
+            AppData.UserInvoiceData.CompanyName = "My Test Company";
+        }
+    }
+
 }

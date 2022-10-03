@@ -1,3 +1,40 @@
 <div class="parent">
-    
+    <div class="child">
+        <div class="top-left">
+            @CompanyName
+        </div>
+        <div class="top-right">
+            INVOICE
+        </div>       
+    </div>
+    <div class="break"></div>
+    <div class="child">
+        <div class="bottom-left">
+            <div>@CompanyStreet</div>
+            <div>@CompanyCity, @CompanyState @CompanyZip</div>
+        </div>
+        <div class="bottom-right">
+            <div>INVOICE #@InvoiceNumber</div>
+            <div>DATE: @Date.ToString("MMMM dd, yyyy")</div>
+        </div>
+    </div>
 </div>
+
+@code {
+
+    [Parameter]
+    public string CompanyName { get; set; }
+    [Parameter]
+    public string CompanyStreet { get; set; }
+    [Parameter]
+    public string CompanyCity { get; set; }
+    [Parameter]
+    public string CompanyState { get; set; }
+    [Parameter]
+    public string CompanyZip { get; set; }
+    [Parameter]
+    public string InvoiceNumber { get; set; }
+    [Parameter]
+    public DateTime Date { get; set; }
+
+}
