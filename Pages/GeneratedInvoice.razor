@@ -6,9 +6,13 @@
 
 @if (!string.IsNullOrEmpty(AppData.UserInvoiceData.CompanyName))
 {
-    <InvoiceHead CompanyName="Brown" CompanyStreet="123 Main Street"
+    <InvoiceHead CompanyName="Brown Shipping Company LLC" CompanyStreet="123 Main Street"
         CompanyCity="Fartsville" CompanyState="Oregon"
-        CompanyZip="12345" InvoiceNumber="0069" Date="@DateTime.Now" />
+        CompanyZip="12345" InvoiceNumber="0069" Date="@DateTime.Now"
+        ToName="Buying Company" ToAddress="987 A Street"
+        ToCity="Brownson" ToState="California" ToZip="98765"
+        ShipName="Frank" ShipAddress="987 A Street"
+        ShipCity="Brownson" ShipState="California" ShipZip="98765" />
 }
 else
 {
