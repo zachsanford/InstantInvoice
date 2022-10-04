@@ -1,0 +1,67 @@
+<div class="parent">
+    <div class="child">
+        <table>
+            <thead>
+                <tr>
+                    <td class="quantity">QUANTITY</td>
+                    <td>DESCRIPTION</td>
+                    <td class="unit-price">UNIT PRICE</td>
+                    <td class="line-total">TOTAL</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LineItem item in LineItems)
+                {
+                    <tr>
+                        <td class="number">@item.Quantity</td>
+                        <td class="text">@item.Description</td>
+                        <td class="number">@item.UnitCost.ToString("C")</td>
+                        <td class="number">@item.Total.ToString("C")</td>
+                    </tr>
+                }
+                @for (int i = LineItems.Count; i < 10; i++)
+                {
+                    <tr>
+                        <td class="number">&nbsp;</td>
+                        <td class="text">&nbsp;</td>
+                        <td class="number">&nbsp;</td>
+                        <td class="number">&nbsp;</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="child">
+        <div class="body-row">
+            <div class="title">SUBTOTAL</div>
+            <div class="side-borders">@Subtotal.ToString("C")</div>
+        </div>
+        <div class="body-row">
+            <div class="title">TAX</div>
+            <div class="side-borders">@Tax.ToString("C")</div>
+        </div>
+        <div class="body-row">
+            <div class="title">DISCOUNT</div>
+            <div class="side-borders">@Discount.ToString("C")</div>
+        </div>
+        <div class="body-row">
+            <div class="title">TOTAL DUE</div>
+            <div class="all-borders">@Total.ToString("C")</div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public List<LineItem> LineItems { get; set; }
+    [Parameter]
+    public double Subtotal { get; set; }
+    [Parameter]
+    public double Discount { get; set; }
+    [Parameter]
+    public double Tax { get; set; }
+    [Parameter]
+    public double Total { get; set; }
+
+}

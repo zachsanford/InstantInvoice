@@ -1,0 +1,79 @@
+.parent {
+    display: flex;
+    flex-direction: column;
+    min-width: 670px;
+    max-width: 670px;
+}
+
+.child {
+    display: flex;
+    flex-direction: column;
+    float: right;
+    min-width: 670px;
+    max-width: 670px;
+}
+
+.body-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.side-borders {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    width: 91px;
+    text-align: center;
+}
+
+.all-borders {
+    border: 1px solid black;
+    width: 91px;
+    text-align: center;
+}
+
+.quantity {
+    width: 90px;
+}
+
+.unit-price {
+    width: 100px;
+}
+
+.line-total {
+    width: 90px;
+}
+
+.number {
+    text-align: center;
+}
+
+.text {
+    overflow: hidden;
+}
+
+.title {
+    width: 100px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+}
+
+thead tr td {
+    border-top: 3px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody tr td {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}

@@ -13,6 +13,9 @@
         ToCity="Brownson" ToState="California" ToZip="98765"
         ShipName="Frank" ShipAddress="987 A Street"
         ShipCity="Brownson" ShipState="California" ShipZip="98765" />
+    <InvoiceBody LineItems="@AppData.UserInvoiceData.Items" Subtotal="@AppData.UserInvoiceData.Subtotal"
+        Discount="@AppData.UserInvoiceData.Discount" Tax="@AppData.UserInvoiceData.Tax"
+        Total="@AppData.UserInvoiceData.Total" />
 }
 else
 {
@@ -22,7 +25,7 @@ else
 @code {
 
     protected override async Task OnInitializedAsync()
-    {   
+    {
         if (AppData.UserInvoiceData == null)
         {
             AppData.UserInvoiceData = new Invoice();
