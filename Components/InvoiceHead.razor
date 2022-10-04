@@ -1,3 +1,84 @@
 <div class="parent">
-    
+    <div class="child">
+        <div class="top-left">
+            @CompanyName
+        </div>
+        <div class="top-right">
+            INVOICE
+        </div>       
+    </div>
+    <div class="break"></div>
+    <div class="child">
+        <div class="center-left">
+            <div>@CompanyStreet</div>
+            <div>@CompanyCity, @CompanyState @CompanyZip</div>
+        </div>
+        <div class="center-right">
+            <div>INVOICE #@InvoiceNumber</div>
+            <div>DATE: @Date.ToString("MMMM dd, yyyy")</div>
+        </div>
+    </div>
+    <div class="break"></div>
+    <div class=child>
+        <div class="bottom">
+            <div class="header">TO:</div>
+            <div>@ToName</div>
+            <div>@ToAddress</div>
+            <div>@ToCity, @ToState @ToZip</div>
+        </div>
+        <div class="bottom">
+            @if (!string.IsNullOrEmpty(ShipName))
+            {
+                <div class="header">SHIP TO:</div>
+                <div>@ShipName</div>
+            }
+            @if (!string.IsNullOrEmpty(ShipAddress))
+            {
+                <div>@ShipAddress</div>
+            }
+            @if (!string.IsNullOrEmpty(ShipCity) || !string.IsNullOrEmpty(ShipState) || !string.IsNullOrEmpty(ShipZip))
+            {
+                <div>@ShipCity, @ShipState @ShipZip</div>
+            }
+        </div>
+    </div>
 </div>
+
+@code {
+
+    [Parameter]
+    public string CompanyName { get; set; }
+    [Parameter]
+    public string CompanyStreet { get; set; }
+    [Parameter]
+    public string CompanyCity { get; set; }
+    [Parameter]
+    public string CompanyState { get; set; }
+    [Parameter]
+    public string CompanyZip { get; set; }
+    [Parameter]
+    public string InvoiceNumber { get; set; }
+    [Parameter]
+    public DateTime Date { get; set; }
+    [Parameter]
+    public string ToName { get; set; }
+    [Parameter]
+    public string ToAddress { get; set; }
+    [Parameter]
+    public string ToCity { get; set; }
+    [Parameter]
+    public string ToState { get; set; }
+    [Parameter]
+    public string ToZip { get; set; }
+    [Parameter]
+    public string ShipName { get; set; } = "";
+    [Parameter]
+    public string ShipAddress { get; set; } = "";
+    [Parameter]
+    public string ShipCity { get; set; } = "";
+    [Parameter]
+    public string ShipState { get; set; } = "";
+    [Parameter]
+    public string ShipZip { get; set; } = "";
+
+}

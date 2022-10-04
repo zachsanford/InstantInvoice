@@ -1,5 +1,6 @@
 @page "/new-invoice"
 @inject Services.AppData AppData
+@inject NavigationManager navigationManager
 
 <PageTitle>Create New Invoice</PageTitle>
 
@@ -274,10 +275,6 @@
     {
         userInvoice.Items = lineItems;
         AppData.UserInvoiceData = userInvoice;
-
-        /*
-            TODO:
-            Need to route to a page that does not inherit shared components.
-        */
+        navigationManager.NavigateTo("/generated-invoice");
     }
 }

@@ -1,0 +1,40 @@
+@page "/generated-invoice"
+@inject Services.AppData AppData
+@layout EmptyLayout
+
+<PageTitle>Your Invoice</PageTitle>
+
+@if (!string.IsNullOrEmpty(AppData.UserInvoiceData.CompanyName))
+{
+    <InvoiceHead CompanyName="@AppData.UserInvoiceData.CompanyName" CompanyStreet="@AppData.UserInvoiceData.CompanyAddress"
+        CompanyCity="@AppData.UserInvoiceData.CompanyCity" CompanyState="@AppData.UserInvoiceData.CompanyState"
+        CompanyZip="@AppData.UserInvoiceData.CompanyZipCode" InvoiceNumber="@AppData.UserInvoiceData.Number" Date="@AppData.UserInvoiceData.Date"
+        ToName="@AppData.UserInvoiceData.BillingName" ToAddress="@AppData.UserInvoiceData.BillingAddress"
+        ToCity="@AppData.UserInvoiceData.BillingCity" ToState="@AppData.UserInvoiceData.BillingState" ToZip="@AppData.UserInvoiceData.BillingZipCode"
+        ShipName="@AppData.UserInvoiceData.ShippingName" ShipAddress="@AppData.UserInvoiceData.ShippingAddress"
+        ShipCity="@AppData.UserInvoiceData.ShippingCity" ShipState="@AppData.UserInvoiceData.ShippingState" ShipZip="@AppData.UserInvoiceData.ShippingZipCode" />
+    <InvoiceBody LineItems="@AppData.UserInvoiceData.Items" Subtotal="@AppData.UserInvoiceData.Subtotal"
+        Discount="@AppData.UserInvoiceData.Discount" Tax="@AppData.UserInvoiceData.Tax"
+        Total="@AppData.UserInvoiceData.Total" />
+    @if (!string.IsNullOrEmpty(AppData.UserInvoiceData.Notes))
+    {
+        <InvoiceFoot Notes="@AppData.UserInvoiceData.Notes" />
+    }
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AppData.UserInvoiceData == null)
+        {
+            AppData.UserInvoiceData = new Invoice();
+            AppData.UserInvoiceData.CompanyName = "My Test Company";
+        }
+    }
+
+}
