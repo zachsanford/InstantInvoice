@@ -1,0 +1,20 @@
+.parent {
+    display: flex;
+    flex-direction: column;
+    min-width: 670px;
+    max-width: 670px;
+    margin-top: 20px
+}
+
+.child {
+    display: flex;
+    flex-direction: column;
+    min-width: 670px;
+    max-width: 670px;
+}
+
+.child div {
+    border: 1px solid black;
+    padding: 5px;
+    word-wrap: normal;
+}

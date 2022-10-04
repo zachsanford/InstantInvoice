@@ -6,16 +6,20 @@
 
 @if (!string.IsNullOrEmpty(AppData.UserInvoiceData.CompanyName))
 {
-    <InvoiceHead CompanyName="Brown Shipping Company LLC" CompanyStreet="123 Main Street"
-        CompanyCity="Fartsville" CompanyState="Oregon"
-        CompanyZip="12345" InvoiceNumber="0069" Date="@DateTime.Now"
-        ToName="Buying Company" ToAddress="987 A Street"
-        ToCity="Brownson" ToState="California" ToZip="98765"
-        ShipName="Frank" ShipAddress="987 A Street"
-        ShipCity="Brownson" ShipState="California" ShipZip="98765" />
+    <InvoiceHead CompanyName="@AppData.UserInvoiceData.CompanyName" CompanyStreet="@AppData.UserInvoiceData.CompanyAddress"
+        CompanyCity="@AppData.UserInvoiceData.CompanyCity" CompanyState="@AppData.UserInvoiceData.CompanyState"
+        CompanyZip="@AppData.UserInvoiceData.CompanyZipCode" InvoiceNumber="@AppData.UserInvoiceData.Number" Date="@AppData.UserInvoiceData.Date"
+        ToName="@AppData.UserInvoiceData.BillingName" ToAddress="@AppData.UserInvoiceData.BillingAddress"
+        ToCity="@AppData.UserInvoiceData.BillingCity" ToState="@AppData.UserInvoiceData.BillingState" ToZip="@AppData.UserInvoiceData.BillingZipCode"
+        ShipName="@AppData.UserInvoiceData.ShippingName" ShipAddress="@AppData.UserInvoiceData.ShippingAddress"
+        ShipCity="@AppData.UserInvoiceData.ShippingCity" ShipState="@AppData.UserInvoiceData.ShippingState" ShipZip="@AppData.UserInvoiceData.ShippingZipCode" />
     <InvoiceBody LineItems="@AppData.UserInvoiceData.Items" Subtotal="@AppData.UserInvoiceData.Subtotal"
         Discount="@AppData.UserInvoiceData.Discount" Tax="@AppData.UserInvoiceData.Tax"
         Total="@AppData.UserInvoiceData.Total" />
+    @if (!string.IsNullOrEmpty(AppData.UserInvoiceData.Notes))
+    {
+        <InvoiceFoot Notes="@AppData.UserInvoiceData.Notes" />
+    }
 }
 else
 {
