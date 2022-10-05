@@ -1,7 +1,11 @@
 <div class="parent">
     <div class="child">
         <div class="top-left">
-            @CompanyName
+            <div>@CompanyName</div>
+            @if (!string.IsNullOrEmpty(CompanyWebsite))
+            {
+                <div class="sub-head">@CompanyWebsite</div>
+            }
         </div>
         <div class="top-right">
             INVOICE
@@ -56,6 +60,10 @@
     public string CompanyState { get; set; }
     [Parameter]
     public string CompanyZip { get; set; }
+    [Parameter]
+    public string? CompanyEmail { get; set; }
+    [Parameter]
+    public string? CompanyWebsite { get; set; }
     [Parameter]
     public string InvoiceNumber { get; set; }
     [Parameter]
