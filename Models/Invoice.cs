@@ -21,7 +21,7 @@ public class Invoice
     [StringLength(20, ErrorMessage = "State too long!")]
     public string CompanyState { get; set; }
     [Required]
-    [StringLength(5, ErrorMessage = "Zip Code too long!")]
+    [StringLength(5, MinimumLength = 5, ErrorMessage = "Zip Code needs to be 5 digits long!")]
     public string CompanyZipCode { get; set; }
     [StringLength(50, ErrorMessage = "Website too long!")]
     public string? CompanyWebsite { get; set; }
@@ -40,7 +40,7 @@ public class Invoice
     [StringLength(20, ErrorMessage = "State too long!")]
     public string BillingState { get; set; }
     [Required]
-    [StringLength(5, ErrorMessage = "Zip Code too long!")]
+    [StringLength(5, MinimumLength = 5, ErrorMessage = "Zip Code needs to be 5 digits long!")]
     public string BillingZipCode { get; set; }
     [StringLength(50, ErrorMessage = "Company Name too long!")]
     public string? ShippingName { get; set; }
@@ -50,14 +50,14 @@ public class Invoice
     public string? ShippingCity { get; set; }
     [StringLength(20, ErrorMessage = "State too long!")]
     public string? ShippingState { get; set; }
-    [StringLength(5, ErrorMessage = "Zip Code too long!")]
+    [StringLength(5, MinimumLength = 5, ErrorMessage = "Zip Code needs to be 5 digits long!")]
     public string? ShippingZipCode { get; set; }
     public List<LineItem> Items { get; set; }
     public double Subtotal => GetTotal(Items);
     public double Discount { get; set; } = 0.00;
     public double Tax { get; set; }
     public double Total => Subtotal - Discount + Tax;
-    [StringLength(250, ErrorMessage = "Notes are too long!")]
+    [StringLength(350, ErrorMessage = "Notes are too long!")]
     public string? Notes { get; set; }
 
     private double GetTotal(List<LineItem> _items)
