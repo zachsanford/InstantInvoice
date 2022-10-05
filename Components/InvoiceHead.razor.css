@@ -7,10 +7,17 @@
 }
 
 .top-left {
+    display: flex;
+    flex-direction: column;
     width: 70%;
     overflow: hidden;
     font-size: 18pt;
     font-weight: bold;
+}
+
+.sub-head {
+    font-weight: normal;
+    font-size: 9pt;
 }
 
 .top-right {
