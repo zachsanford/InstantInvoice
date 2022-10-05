@@ -22,9 +22,10 @@
 
 .top-right {
     width: 30%;
+    height: 100%;
     overflow: hidden;
     text-align: right;
-    font-size: 24pt;
+    font-size: 30pt;
     font-weight: bold;
     font-style: italic;
     color: dimgray;

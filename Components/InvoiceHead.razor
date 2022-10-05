@@ -8,7 +8,7 @@
             }
         </div>
         <div class="top-right">
-            INVOICE
+            INVOICE&nbsp;
         </div>       
     </div>
     <div class="break"></div>
@@ -16,8 +16,16 @@
         <div class="center-left">
             <div>@CompanyStreet</div>
             <div>@CompanyCity, @CompanyState @CompanyZip</div>
+            @if (!string.IsNullOrEmpty(CompanyEmail))
+            {
+                <div>@CompanyEmail</div>
+            }
         </div>
         <div class="center-right">
+            @if (!string.IsNullOrEmpty(CompanyEmail))
+            {
+                <div>&nbsp;</div>
+            }
             <div>INVOICE #@InvoiceNumber</div>
             <div>DATE: @Date.ToString("MMMM dd, yyyy")</div>
         </div>
